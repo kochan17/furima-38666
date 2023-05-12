@@ -2,14 +2,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
-end
-
-describe 'ユーザー新規登録' do
-  context '新規登録できるとき' do
-   it '全ての項目の入力が存在すれば登録できる' do
-        expect(@user).to be_valid
-   end
   end
+
+  describe 'ユーザー新規登録' do
+    context '新規登録できるとき' do
+      it '全ての項目の入力が存在すれば登録できる' do
+        expect(@user).to be_valid
+      end
+    end
+  
   context '新規登録できないとき' do
     it 'nick_nameが空では登録できない' do
         @user.nick_name = ''
@@ -97,11 +98,11 @@ describe 'ユーザー新規登録' do
         expect(@user).not_to be_valid
     end
     it 'first_nameが全角（漢字・ひらがな・カタカナ）での入力でないと登録できない' do
-        @user.first_name = 'John'
+        @user.first_name = 'Jackson'
         expect(@user).not_to be_valid
     end
     it 'family_name_kanaが全角（カタカナ）での入力でないと登録できない' do
-        @user.family_name_kana = 'すみす'
+        @user.family_name_kana = 'まいける'
         expect(@user).not_to be_valid
     end
     it 'first_name_kanaが全角（カタカナ）での入力でないと登録できない' do
