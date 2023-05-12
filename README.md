@@ -23,70 +23,60 @@ Things you may want to cover:
 
 * ...
 
-## usersテーブル
+## Users Table
 
-|Column               |Type    |Options                    |
-|---------------------|--------|---------------------------|
-| first_name          | string | null: false               |
-| last_name           | string | null: false               |
-| first_name_kana     | string | null: false               |
-| last_name_kana      | string | null: false               |
-| nickname            | string | null: false               |
-| email               | string | null: false, unique: true |
-| encrypted_password  | string | null: false               |
-| birth               | date   | null: false               |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| id              | bigint | primary key |
+| nickname        | string | null: false |
+| email           | string | null: false, unique: true |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
+| birth_date      | date   | null: false |
 
+## Items Table
 
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| id              | bigint     | primary key                    |
+| user_id         | references | null: false, foreign_key: true |
+| name            | string     | null: false                    |
+| description     | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| postage_id      | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| handling_time_id| integer    | null: false                    |
+| price           | integer    | null: false                    |
 
-### Association
-- has_many :items
-- has_many :buyers
+## Images Table
 
-## items テーブル
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| id       | bigint     | primary key                    |
+| item_id  | references | null: false, foreign_key: true |
+| url      | string     | null: false                    |
+
+## Purchases Table
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| id      | bigint     | primary key                    |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
+
+## Addresses Table
 
 | Column       | Type       | Options                        |
-| -------------| ---------- | ------------------------------ |
-| item_name    | string     | null: false                    |
-| direction    | text       | null: false                    |
-| category_id  | integer    | null: false                    |
-| condition_id | integer    | null: false                    |
-| postage_id   | integer    | null: false                    |
-| area_id      | integer    | null: false                    |
-| long_id      | integer    | null: false                    |
-| price        | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
-
-
-### Association
-
-- belongs_to :user
-- has_one :buyer
-
-## buyers テーブル
-
-| Column      | Type       | Options                        |
-| ------------| ---------- | ------------------------------ |
-| user        | references | null: false, foreign_key: true |
-| item　　　   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-- has_one :send_address
-
-## send_addresses テーブル
-
-| Column         | Type       | Options           |
-| ---------------| ---------- | ----------------- |
-| post_code      | string     | null: false       |
-| area_id        | integer    | null: false       |
-| city           | string     | null: false       |
-| address_number | string     | null: false       |
-| house_name     | string     |                   |
-| telephone      | string     | null: false       |
-| buyer          | references | foreign_key: true |
-
-### Association
-
-- belongs_to :buyer
+| ------------ | ---------- | ------------------------------ |
+| id           | bigint     | primary key                    |
+| purchase_id  | references | null: false, foreign_key: true |
+| postal_code  | string     | null: false                    |
+| prefecture_id| integer    | null: false                    |
+| city         | string     | null: false                    |
+| house_number | string     | null: false                    |
+| building_name| string     |                                |
+| phone_number | string     | null: false                    |
