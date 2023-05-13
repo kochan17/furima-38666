@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  belongs_to :user
+  has_one_attached :image
   
   validates :region_id, numericality: { other_than: 1}
   validates :deadline_id, numericality: { other_than: 1}
