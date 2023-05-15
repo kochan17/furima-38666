@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-  #   image                 { 'aaa.jpg' }
     item_name             { 'エアリアル' }
     description           { '機動戦士' }
     price                 { 2480 }
