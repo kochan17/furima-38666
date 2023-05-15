@@ -1,10 +1,12 @@
 require 'rails_helper'
+
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
 
   describe 'ユーザー新規登録' do
+
     context '新規登録できる場合' do
       it 'nicknameとemail、passwordとpassword_confirmationとlast_name,first_name,last_name_kana,first_name_kana,birth_dateが存在すれば登録できる' do
         expect(@user).to be_valid
@@ -16,10 +18,12 @@ RSpec.describe User, type: :model do
         @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Nickname can't be blank"
+
       end
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
+
         expect(@user.errors.full_messages).to include "Email can't be blank"
       end
       it 'last_nameが空では登録できない' do
@@ -75,6 +79,8 @@ RSpec.describe User, type: :model do
       it 'passwordが5文字以下では登録できない' do
         @user.password = '12345'
         @user.password_confirmation = '12345'
+=======
+
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
@@ -84,6 +90,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
+
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = '123456'
         @user.password_confirmation = '1234567'
@@ -119,6 +126,7 @@ RSpec.describe User, type: :model do
         @user.email = 'testmail'
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
+
       end
     end
   end
