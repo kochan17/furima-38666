@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2023_05_13_174753) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "item_name", null: false
     t.integer "category_id", null: false
     t.integer "price", null: false
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 2023_05_13_174753) do
     t.integer "shipping_estimate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
