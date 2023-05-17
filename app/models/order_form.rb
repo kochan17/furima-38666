@@ -10,6 +10,7 @@ class OrderForm
     validates :city
     validates :street_address
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. Input only number", allow_blank: true}
+    validates :token
   end
 
   def save
