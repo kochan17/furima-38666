@@ -1,5 +1,3 @@
-/* 商品の概要 */
-
 .item-show {
   background-color: #f8f8f8;
   width: 100vw;
@@ -137,9 +135,6 @@
 .report-flag-icon {
   margin-right: 5px;
 }
-
-
-/* /商品の概要 */
 
 .comment-box {
   width: 40vw;
