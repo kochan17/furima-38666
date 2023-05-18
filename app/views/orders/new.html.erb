@@ -25,7 +25,7 @@
         ¥<%=  @item.price %>
       </p>
     </div>
-    <%= form_with model: @order_form, url: place_order_path(@item.id), id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with model: @order_form, url: item_place_order_path(@item.id), id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
       <%= f.hidden_field :item_id, value: @item.id %>
       <%= f.hidden_field :price, value: @item.price %>
       <%= render 'shared/error_messages', model: f.object %> 

@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
-
+  
   def update
     if @item.update(item_params)
       redirect_to item_path(@item)
@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
 
   def redirect_unless_owner
     return if current_user == @item.user
-
-    redirect_to root_path
+      redirect_to root_path
   end
+
 end
