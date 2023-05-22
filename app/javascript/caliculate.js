@@ -10,4 +10,5 @@ function caliculate (){
       addProfit.textContent = price-taxPrice;
   });
 }
+
 window.addEventListener('load', caliculate);
