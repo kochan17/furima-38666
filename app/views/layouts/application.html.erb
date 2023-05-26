@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html>
+<%# app/views/pages/index.html.erb %>
 
-<head>
-  <title>Furima</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
-  <%= stylesheet_link_tag 'application', media: 'all'  %>
-    <%= javascript_pack_tag 'application' %>
-</head>
+<%# ページタイトル %>
+<h1>Welcome to ChatGPT with Situations</h1>
 
-<body>
-  <%= yield %>
-</body>
+<%# アプリケーション説明 %>
+<p>This is a chatbot application that allows you to converse with OpenAI's ChatGPT in a range of pre-defined situations. Choose a situation and start chatting!</p>
 
-</html>
+<%# シチュエーション選択フォーム %>
+<%= form_with url: '#', method: :get, local: true do |form| %>
+  <%= form.label :situation, 'Choose a situation:' %>
+  <%= form.select :situation, ['At a coffee shop', 'In a business meeting', 'At a science conference', 'In a spaceship'] %> <%# ここに実際のシチュエーションのオプションを追加します %>
+  <%= form.submit 'Start Chatting' %>
+<% end %>
+
+<%# ChatGPTとの対話エリア（まだ実装されていません） %>
+<div id="chat-area">
+  <%# ここにChatGPTとの対話が表示されます %>
+</div>
