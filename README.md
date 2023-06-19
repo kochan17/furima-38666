@@ -27,7 +27,7 @@ http://35.79.187.70/
 ## データベース設計
 ER図はer.dioに記載
 
-## users table
+## users テーブル
 
 
 |Column               |Type  |Options                  |
@@ -47,7 +47,7 @@ ER図はer.dioに記載
 * has_many :items
 * has_many :orders
 
-## items table
+## items テーブル
 
 
 |Column                  |Type      |Options                       |
@@ -69,7 +69,7 @@ ER図はer.dioに記載
 * belongs_to :user
 * has_one :order
 
-## orders table
+## orders テーブル
 
 
 |Column|Type      |Options                      |
@@ -84,7 +84,7 @@ ER図はer.dioに記載
 * belongs_to :item
 * has_one :address
 
-## addresses table
+## addresses テーブル
 
 |Column        |Type      |Options                      |
 |--------------|----------|-----------------------------|
@@ -99,3 +99,47 @@ ER図はer.dioに記載
 ### Association
 
 * belongs_to :order
+
+## 各テーブルの説明
+### usersテーブル
+- ニックネーム
+- メールアドレス
+- 暗号化パスワード
+- 姓(漢字) 
+- 名(漢字)
+- 姓(カナ)
+- 名(カナ)
+- 誕生年月日
+
+### itemsテーブル
+- カテゴリーID (Activehash)
+- 価格
+- 出品者
+- 商品説明
+- 商品状態ID (Activehash)
+- 配送料負担ID (Activehash)
+- 都道府県ID (Activehash)
+- 発送までの日数ID (Activehash)
+
+### favoritesテーブル
+-ユーザーID (ユーザーの外部キーカラム)
+商品ID (商品の外部キーカラム)
+
+### Purchase_historyテーブル
+- ユーザーID (ユーザーの外部キーカラム) 
+- 商品ID (商品の外部キーカラム)
+
+### addressesテーブル
+- 購入履歴
+- 郵便番号
+- 都道府県ID (Activehash)
+- 市区町村
+- 番地
+- 建物名
+- 電話番号
+
+## 開発環境
+- 言語: Ruby
+- フレームワーク: Ruby on Rails
+- データベース: PostgreSQL
+- バージョン管理: Git
